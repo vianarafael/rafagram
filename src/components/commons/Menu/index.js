@@ -1,6 +1,7 @@
 import { MenuWrapper } from "./styles/MenuWrapper";
 import { Logo } from "../../../theme/Logo";
 import { Button } from "../Button";
+import Text from "../../foundations/Text";
 
 const links = [
   {
@@ -27,7 +28,9 @@ function Menu() {
         {links.map((link, index) => {
           return (
             <li key={index}>
-              <a href={link.url}>{link.text}</a>
+              <Text variant="smallestException" tag="a" href={link.url}>
+                {link.text}
+              </Text>
             </li>
           );
         })}
