@@ -38,4 +38,14 @@ export const Button = styled.button`
   &:focus {
     opacity: 0.5;
   }
+
+  ${function (props) {
+    console.log("Button", props.theme.breakpoints.sm);
+
+    return `
+       @media screen and (min-width : ${props.theme.breakpoints.sm}px) {
+        background: red !important;     
+      }
+  `;
+  }}
 `;
