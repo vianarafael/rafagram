@@ -1,6 +1,7 @@
 import styled, { css } from "styled-components";
 import { get } from "lodash";
 import { TextStyleVariantMap } from "../../foundations/Text";
+import { breakpointsMedia } from "../../../theme/utils/breakpointsMedia";
 
 const ButtonGhost = css`
   color: ${(props) => {
@@ -38,7 +39,7 @@ export const Button = styled.button`
   &:focus {
     opacity: 0.5;
   }
-
+  /* 
   ${function (props) {
     console.log("Button", props.theme.breakpoints.sm);
 
@@ -47,5 +48,16 @@ export const Button = styled.button`
         background: red !important;     
       }
   `;
-  }}
+  }} */
+
+  ${breakpointsMedia({
+    xs: css`
+      /* all devices */
+      ${TextStyleVariantMap.smallestException}
+    `,
+    md: css`
+      /* from md breakpoin */
+      ${TextStyleVariantMap.paragraph1}
+    `,
+  })}
 `;
