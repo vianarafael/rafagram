@@ -20,17 +20,17 @@ export const TextStyleVariantsMap = {
   `,
 };
 
-function propsToStyle(propName, props) {
-  return {
-    [propName]: props[propName],
+function propsToStyle(propName) {
+  return function (props) {
+    return { [propName]: props[propName] };
   };
 }
 
 const TextBase = styled.span`
   ${(props) => TextStyleVariantsMap[props.variant]}
-  ${(props) => {
-    return propsToStyle("textAlign", props);
-  }}
+  ${propsToStyle("textAlign")} /* ${(props) => {
+    return propsToStyle("textAlign");
+  }} */
 `;
 
 export default function Text({ tag, variant, children, ...props }) {
