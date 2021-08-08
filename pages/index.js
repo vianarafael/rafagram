@@ -31,11 +31,10 @@ export default function Home() {
           variant="paragraph1"
           tag="p"
           color="tertiary.light"
-          textAlign="center"
-          // textAlign={{
-          //   xs: "center",
-          //   md: "left",
-          // }}
+          textAlign={{
+            xs: "center",
+            md: "left",
+          }}
         >
           Lorem Ipsum is simply dummy text of the printing and typesetting
           industry. Lorem Ipsum has been the industrys standard dummy text ever

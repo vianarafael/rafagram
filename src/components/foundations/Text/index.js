@@ -1,5 +1,6 @@
 import styled, { css } from "styled-components";
 import PropTypes from "prop-types";
+import propsToStyle from "../../../theme/utils/propToStyle";
 
 export const TextStyleVariantsMap = {
   paragraph1: css`
@@ -20,17 +21,9 @@ export const TextStyleVariantsMap = {
   `,
 };
 
-function propsToStyle(propName) {
-  return function (props) {
-    return { [propName]: props[propName] };
-  };
-}
-
 const TextBase = styled.span`
   ${(props) => TextStyleVariantsMap[props.variant]}
-  ${propsToStyle("textAlign")} /* ${(props) => {
-    return propsToStyle("textAlign");
-  }} */
+  ${propsToStyle("textAlign")}
 `;
 
 export default function Text({ tag, variant, children, ...props }) {
