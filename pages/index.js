@@ -2,6 +2,7 @@ import Menu from "../src/components/commons/Menu";
 import Footer from "../src/components/commons/Footer";
 import Text from "../src/components/foundations/Text";
 import { Button } from "../src/components/commons/Button";
+import { Grid } from "../src/components/foundations/Layout/Grid";
 
 export default function Home() {
   return (
@@ -15,6 +16,20 @@ export default function Home() {
       }}
     >
       <Menu />
+
+      <Grid.Container>
+        <Grid.Row>
+          <Grid.Col offset={{ xs: 0, md: 1 }} value={{ xs: 12, md: 5 }}>
+            Text
+          </Grid.Col>
+        </Grid.Row>
+        <Grid.Row>
+          <Grid.Col value={{ xs: 12, md: 6 }}>
+            <img src="https://place-hold.it/400x400" />
+          </Grid.Col>
+        </Grid.Row>
+      </Grid.Container>
+
       <div>
         <Text
           variant="title"
