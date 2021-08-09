@@ -1,3 +1,4 @@
+import React from "react";
 import Menu from "../src/components/commons/Menu";
 import Footer from "../src/components/commons/Footer";
 import Text from "../src/components/foundations/Text";
@@ -13,6 +14,9 @@ export default function Home() {
       flexWrap="wrap"
       flexDirection="column"
       justifyContent="space-between"
+      backgroundImage="url(/images/bubbles.svg)"
+      backgroundRepeat="no-repeat"
+      backgroundPosition="bottom right"
     >
       <Menu />
 
