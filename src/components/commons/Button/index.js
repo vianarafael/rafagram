@@ -3,21 +3,16 @@ import { get } from "lodash";
 import { TextStyleVariantsMap } from "../../foundations/Text";
 import { breakpointsMedia } from "../../../theme/utils/breakpointsMedia";
 import propToStyle from "../../../theme/utils/propToStyle";
-
+// test
 const ButtonGhost = css`
-  color: ${(props) => {
-    return get(props.theme, `colors.${props.variant}.color`);
-  }};
+  color: ${(props) => get(props.theme, `colors.${props.variant}.color`)};
   background: transparent;
 `;
 
 const ButtonDefault = css`
-  color: ${(props) => {
-    return get(props.theme, `colors.${props.variant}.contrastText`);
-  }};
-  background-color: ${(props) => {
-    return get(props.theme, `colors.${props.variant}.color`);
-  }};
+  color: ${(props) => get(props.theme, `colors.${props.variant}.contrastText`)};
+  background-color: ${(props) =>
+    get(props.theme, `colors.${props.variant}.color`)};
 `;
 
 export const Button = styled.button`
