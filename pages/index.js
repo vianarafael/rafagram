@@ -5,10 +5,7 @@ import Text from "../src/components/foundations/Text";
 import { Button } from "../src/components/commons/Button";
 import { Grid } from "../src/components/foundations/Layout/Grid";
 import { Box } from "../src/components/foundations/Layout/Box";
-
-function Modal() {
-  return <div>Modal</div>;
-}
+import Modal from "../src/components/commons/Modal";
 
 export default function Home() {
   const [modal, setModal] = useState(false);
@@ -24,7 +21,14 @@ export default function Home() {
       backgroundRepeat="no-repeat"
       backgroundPosition="bottom right"
     >
-      {modal ? <Modal /> : ""}
+      <Modal
+        isOpen={modal}
+        onClose={() => {
+          setModal(false);
+        }}
+      >
+        My modal content
+      </Modal>
 
       <Menu />
 
@@ -77,7 +81,7 @@ export default function Home() {
                 }}
                 display="block"
                 onClick={() => {
-                  setModal(true);
+                  setModal(!modal);
                 }}
               >
                 Cadastrar
