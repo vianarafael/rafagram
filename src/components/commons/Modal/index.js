@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import React from "react";
 import styled, { css } from "styled-components";
 
@@ -29,16 +30,28 @@ const ModalWrapper = styled.div`
 `;
 
 function Modal({ isOpen, onClose, children }) {
+  console.log(children);
   return (
     <ModalWrapper
       isOpen={isOpen}
-      onClick={() => {
-        onClose();
+      onClick={(event) => {
+        const isSafeArea = event.target.closest(
+          '[data-modal-safe-area="true"]'
+        );
+        if (!isSafeArea) {
+          onClose();
+        }
       }}
     >
-      {children}
+      {children({ "data-modal-safe-area": "true" })}
     </ModalWrapper>
   );
 }
+
+Modal.propTypes = {
+  isOpen: PropTypes.bool.isRequired,
+  onClose: PropTypes.func.isRequired,
+  children: PropTypes.func.isRequired,
+};
 
 export default Modal;

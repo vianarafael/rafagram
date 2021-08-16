@@ -27,7 +27,12 @@ export default function Home() {
           setModal(false);
         }}
       >
-        My modal content
+        {(props) => (
+          // eslint-disable-next-line react/jsx-props-no-spreading
+          <Box backgroundColor="tomato" {...props}>
+            <div>My modal content</div>
+          </Box>
+        )}
       </Modal>
 
       <Menu />
