@@ -54,6 +54,7 @@ function Modal({ isOpen, onClose, children }) {
           },
         }}
         animate={isOpen ? "open" : "closed"}
+        transition={{ duration: 0.5 }}
         style={{
           display: "flex",
           flex: 1,
