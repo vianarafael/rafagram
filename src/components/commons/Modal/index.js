@@ -14,6 +14,7 @@ const ModalWrapper = styled.div`
   bottom: 0;
   margin: auto;
   overflow: scroll;
+  transition: 0.5s;
 
   ${({ isOpen }) => {
     if (isOpen) {
@@ -30,7 +31,6 @@ const ModalWrapper = styled.div`
 `;
 
 function Modal({ isOpen, onClose, children }) {
-  console.log(children);
   return (
     <ModalWrapper
       isOpen={isOpen}
@@ -43,7 +43,14 @@ function Modal({ isOpen, onClose, children }) {
         }
       }}
     >
-      {children({ "data-modal-safe-area": "true" })}
+      <div
+        style={{
+          display: "flex",
+          flex: 1,
+        }}
+      >
+        {children({ "data-modal-safe-area": "true" })}
+      </div>
     </ModalWrapper>
   );
 }
