@@ -90,7 +90,7 @@ export default function Home() {
           </Grid.Col>
           <Grid.Col value={{ xs: 12, md: 6 }}>
             <img
-              alt="a cellphone example of the application"
+              alt="An example of the application on a cellphone"
               style={{ display: "block", margin: "auto" }}
               src="https://bootcamp-alura-01-git-modulo01.omariosouto.vercel.app/images/phones.png"
             />
