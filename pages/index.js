@@ -6,6 +6,7 @@ import { Button } from "../src/components/commons/Button";
 import { Grid } from "../src/components/foundations/Layout/Grid";
 import { Box } from "../src/components/foundations/Layout/Box";
 import Modal from "../src/components/commons/Modal";
+import SingupForm from "../src/components/patterns/singupForm";
 
 export default function Home() {
   const [modal, setModal] = useState(false);
@@ -26,12 +27,7 @@ export default function Home() {
           setModal(false);
         }}
       >
-        {(props) => (
-          // eslint-disable-next-line react/jsx-props-no-spreading
-          <Box backgroundColor="tomato" {...props}>
-            <div>My modal content</div>
-          </Box>
-        )}
+        {(modalProps) => <SingupForm modalProps={modalProps} />}
       </Modal>
 
       <Menu />
@@ -94,7 +90,7 @@ export default function Home() {
           </Grid.Col>
           <Grid.Col value={{ xs: 12, md: 6 }}>
             <img
-              alt="a cellphone example of the application"
+              alt="An example of the application on a cellphone"
               style={{ display: "block", margin: "auto" }}
               src="https://bootcamp-alura-01-git-modulo01.omariosouto.vercel.app/images/phones.png"
             />
