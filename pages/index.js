@@ -23,11 +23,14 @@ export default function Home() {
     >
       <Modal
         isOpen={modal}
+        setModal={setModal}
         onClose={() => {
           setModal(false);
         }}
       >
-        {(modalProps) => <SingupForm modalProps={modalProps} />}
+        {(modalProps) => (
+          <SingupForm modalProps={modalProps} setModal={setModal} />
+        )}
       </Modal>
 
       <Menu />

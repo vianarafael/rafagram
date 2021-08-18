@@ -70,7 +70,7 @@ function FormContent() {
 }
 
 // eslint-disable-next-line react/prop-types
-export default function FormCadastro({ modalProps }) {
+export default function signupForm({ modalProps, setModal }) {
   return (
     <Grid.Row marginLeft={0} marginRight={0} flex={1} justifyContent="flex-end">
       <Grid.Col
@@ -93,6 +93,25 @@ export default function FormCadastro({ modalProps }) {
           // eslint-disable-next-line react/jsx-props-no-spreading
           {...modalProps}
         >
+          {/* Hacky approach, come back to it later. */}
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "flex-end",
+            }}
+          >
+            <button
+              style={{
+                cursor: "pointer",
+                background: "#fff",
+                border: "none",
+              }}
+              type="button"
+              onClick={() => setModal(false)}
+            >
+              X
+            </button>
+          </div>
           <FormContent />
         </Box>
       </Grid.Col>
