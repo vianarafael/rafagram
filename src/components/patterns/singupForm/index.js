@@ -1,13 +1,25 @@
 import React, { useState } from "react";
+import { Lottie } from "@crello/react-lottie";
+import successAnimation from "./animations/success.json";
+import errorAnimation from "./animations/error.json";
 import { Grid } from "../../foundations/Layout/Grid";
 import { Box } from "../../foundations/Layout/Box";
 import { Button } from "../../commons/Button";
 import TextField from "../../forms/TextField";
 import Text from "../../foundations/Text";
 
+const formStates = {
+  DEFAULT: "DEFAULT",
+  LOADING: "LOADING",
+  DONE: "DONE",
+  ERROR: "ERROR",
+};
+
 function FormContent() {
+  const [isFormSubmitted, setIsFormSubmitted] = useState(false);
+  const [submitionStatus, setSubmitionStatus] = useState(formStates.DEFAULT);
   const [userInfo, setUserInfo] = useState({
-    email: "",
+    name: "",
     user: "",
   });
 
@@ -18,14 +30,44 @@ function FormContent() {
   }
 
   const isFormInvalid =
-    userInfo.email.length === 0 || userInfo.user.length === 0;
+    userInfo.name.length === 0 || userInfo.user.length === 0;
 
   return (
     <form
       //   style={{ margin: "0 auto" }}
       onSubmit={(e) => {
         e.preventDefault();
-        console.log("form sent", userInfo);
+
+        setIsFormSubmitted(true);
+
+        // Data Transfer Object
+        const userDTO = {
+          username: userInfo.user,
+          name: userInfo.name,
+        };
+
+        fetch("https://instalura-api.vercel.app/api/users", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(userDTO),
+        })
+          .then((res) => {
+            if (res.ok) {
+              return res.json();
+            }
+
+            throw new Error("Unable to Sign Up :(");
+          })
+          .then((resObj) => {
+            setSubmitionStatus(formStates.DONE);
+            console.log(resObj);
+          })
+          .catch((err) => {
+            setSubmitionStatus(formStates.ERROR);
+            console.error(err);
+          });
       }}
     >
       <Text variant="title" tag="h1" color="tertiary.main">
@@ -42,9 +84,9 @@ function FormContent() {
       </Text>
       <div>
         <TextField
-          placeholder="Email"
-          name="email"
-          value={userInfo.email}
+          placeholder="Name"
+          name="name"
+          value={userInfo.name}
           onChange={handleChange}
         />
       </div>
@@ -65,12 +107,42 @@ function FormContent() {
       >
         Sign Up
       </Button>
+
+      {isFormSubmitted && submitionStatus === "DONE" && (
+        <Box>
+          <Lottie
+            width="150px"
+            height="150px"
+            className="lottie-container basic"
+            config={{
+              animationData: successAnimation,
+              loop: true,
+              autoplay: true,
+            }}
+          />
+        </Box>
+      )}
+
+      {isFormSubmitted && submitionStatus === "ERROR" && (
+        <Box>
+          <Lottie
+            width="150px"
+            height="150px"
+            className="lottie-container basic"
+            config={{
+              animationData: errorAnimation,
+              loop: true,
+              autoplay: true,
+            }}
+          />
+        </Box>
+      )}
     </form>
   );
 }
 
 // eslint-disable-next-line react/prop-types
-export default function FormCadastro({ modalProps }) {
+export default function signupForm({ modalProps, setModal }) {
   return (
     <Grid.Row marginLeft={0} marginRight={0} flex={1} justifyContent="flex-end">
       <Grid.Col
@@ -93,6 +165,25 @@ export default function FormCadastro({ modalProps }) {
           // eslint-disable-next-line react/jsx-props-no-spreading
           {...modalProps}
         >
+          {/* Hacky approach, come back to it later. */}
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "flex-end",
+            }}
+          >
+            <button
+              style={{
+                cursor: "pointer",
+                background: "#fff",
+                border: "none",
+              }}
+              type="button"
+              onClick={() => setModal(false)}
+            >
+              X
+            </button>
+          </div>
           <FormContent />
         </Box>
       </Grid.Col>
