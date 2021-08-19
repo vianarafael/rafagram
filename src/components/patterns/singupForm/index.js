@@ -5,7 +5,16 @@ import { Button } from "../../commons/Button";
 import TextField from "../../forms/TextField";
 import Text from "../../foundations/Text";
 
+const formStates = {
+  DEFAULT: "DEFAULT",
+  LOADING: "LOADING",
+  DONE: "DONE",
+  ERROR: "ERROR",
+};
+
 function FormContent() {
+  const [isFormSubmitted, setIsFormSubmitted] = useState(false);
+  const [submitionStatus, setSubmitionStatus] = useState(formStates.DEFAULT);
   const [userInfo, setUserInfo] = useState({
     name: "",
     user: "",
@@ -25,15 +34,21 @@ function FormContent() {
       //   style={{ margin: "0 auto" }}
       onSubmit={(e) => {
         e.preventDefault();
+
+        setIsFormSubmitted(true);
+
+        // Data Transfer Object
+        const userDTO = {
+          username: userInfo.user,
+          name: userInfo.name,
+        };
+
         fetch("https://instalura-api.vercel.app/api/users", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({
-            username: userInfo.user,
-            name: userInfo.name,
-          }),
+          body: JSON.stringify(userDTO),
         })
           .then((res) => {
             if (res.ok) {
@@ -43,9 +58,11 @@ function FormContent() {
             throw new Error("Unable to Sign Up :(");
           })
           .then((resObj) => {
+            setSubmitionStatus(formStates.DONE);
             console.log(resObj);
           })
           .catch((err) => {
+            setSubmitionStatus(formStates.ERROR);
             console.error(err);
           });
       }}
@@ -87,6 +104,10 @@ function FormContent() {
       >
         Sign Up
       </Button>
+
+      {isFormSubmitted && submitionStatus === "DONE" && <p>Success</p>}
+
+      {isFormSubmitted && submitionStatus === "ERROR" && <p>Failure</p>}
     </form>
   );
 }
