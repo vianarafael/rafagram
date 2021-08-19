@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+import { Lottie } from "@crello/react-lottie";
+import successAnimation from "./animations/success.json";
+import errorAnimation from "./animations/error.json";
 import { Grid } from "../../foundations/Layout/Grid";
 import { Box } from "../../foundations/Layout/Box";
 import { Button } from "../../commons/Button";
@@ -105,9 +108,35 @@ function FormContent() {
         Sign Up
       </Button>
 
-      {isFormSubmitted && submitionStatus === "DONE" && <p>Success</p>}
+      {isFormSubmitted && submitionStatus === "DONE" && (
+        <Box>
+          <Lottie
+            width="150px"
+            height="150px"
+            className="lottie-container basic"
+            config={{
+              animationData: successAnimation,
+              loop: true,
+              autoplay: true,
+            }}
+          />
+        </Box>
+      )}
 
-      {isFormSubmitted && submitionStatus === "ERROR" && <p>Failure</p>}
+      {isFormSubmitted && submitionStatus === "ERROR" && (
+        <Box>
+          <Lottie
+            width="150px"
+            height="150px"
+            className="lottie-container basic"
+            config={{
+              animationData: errorAnimation,
+              loop: true,
+              autoplay: true,
+            }}
+          />
+        </Box>
+      )}
     </form>
   );
 }
