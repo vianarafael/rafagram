@@ -7,7 +7,7 @@ import Text from "../../foundations/Text";
 
 function FormContent() {
   const [userInfo, setUserInfo] = useState({
-    email: "",
+    name: "",
     user: "",
   });
 
@@ -18,14 +18,36 @@ function FormContent() {
   }
 
   const isFormInvalid =
-    userInfo.email.length === 0 || userInfo.user.length === 0;
+    userInfo.name.length === 0 || userInfo.user.length === 0;
 
   return (
     <form
       //   style={{ margin: "0 auto" }}
       onSubmit={(e) => {
         e.preventDefault();
-        console.log("form sent", userInfo);
+        fetch("https://instalura-api.vercel.app/api/users", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            username: userInfo.user,
+            name: userInfo.name,
+          }),
+        })
+          .then((res) => {
+            if (res.ok) {
+              return res.json();
+            }
+
+            throw new Error("Unable to Sign Up :(");
+          })
+          .then((resObj) => {
+            console.log(resObj);
+          })
+          .catch((err) => {
+            console.error(err);
+          });
       }}
     >
       <Text variant="title" tag="h1" color="tertiary.main">
@@ -42,9 +64,9 @@ function FormContent() {
       </Text>
       <div>
         <TextField
-          placeholder="Email"
-          name="email"
-          value={userInfo.email}
+          placeholder="Name"
+          name="name"
+          value={userInfo.name}
           onChange={handleChange}
         />
       </div>
