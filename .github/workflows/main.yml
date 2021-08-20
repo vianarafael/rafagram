@@ -28,7 +28,9 @@ jobs:
       # Runs a single command using the runners shell
       - name: Show Node version
         run: node -v
+      - name: Install dependencies
+        run: yarn install
       - name: Running the linter
-        run: echo I'm alive
+        run: yarn line
 
  
