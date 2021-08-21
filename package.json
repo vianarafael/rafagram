@@ -3,7 +3,8 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "lint": "eslint \"**/*.js\" --ignore-pattern node_modules/"
   },
   "dependencies": {
     "@crello/react-lottie": "^0.0.11",
@@ -25,7 +26,13 @@
     "eslint-plugin-import": "^2.24.0",
     "eslint-plugin-jsx-a11y": "^6.4.1",
     "eslint-plugin-react": "^7.24.0",
-    "eslint-plugin-react-hooks": "^4.2.0"
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "husky": "^7.0.1"
+  },
+  "husky": {
+    "hooks": {
+      "pre-push": "yarn lint"
+    }
   },
   "license": "MIT"
 }
