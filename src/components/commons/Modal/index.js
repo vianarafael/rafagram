@@ -3,13 +3,12 @@ import React from "react";
 import styled, { createGlobalStyle, css } from "styled-components";
 import { motion } from "framer-motion";
 
-
+// test
 const LockScroll = createGlobalStyle`
   body {
     overflow: hidden;
   }
 `;
-
 
 const ModalWrapper = styled.div`
   display: flex;
