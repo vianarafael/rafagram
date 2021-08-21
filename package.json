@@ -3,7 +3,8 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "lint": "eslint \"**/*.js\" --ignore-pattern node_modules/"
   },
   "dependencies": {
     "@crello/react-lottie": "^0.0.11",

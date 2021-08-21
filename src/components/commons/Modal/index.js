@@ -3,7 +3,6 @@ import React from "react";
 import styled, { createGlobalStyle, css } from "styled-components";
 import { motion } from "framer-motion";
 
-// testss
 const LockScroll = createGlobalStyle`
   body {
     overflow: hidden;
