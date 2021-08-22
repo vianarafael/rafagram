@@ -1,4 +1,4 @@
-import { css } from "styled-components";
+/* eslint-disable consistent-return */
 import { breakpointsMedia } from "./breakpointsMedia";
 
 export default function propsToStyle(propName) {

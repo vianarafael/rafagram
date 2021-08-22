@@ -1,3 +1,4 @@
+import React from "react";
 import { MenuWrapper } from "./styles/MenuWrapper";
 import { Logo } from "../../../theme/Logo";
 import { Button } from "../Button";
@@ -25,15 +26,14 @@ function Menu() {
         <Logo />
       </MenuWrapper.LeftSide>
       <MenuWrapper.CentralSide>
-        {links.map((link, index) => {
-          return (
-            <li key={index}>
-              <Text variant="smallestException" tag="a" href={link.url}>
-                {link.text}
-              </Text>
-            </li>
-          );
-        })}
+        {links.map((link, index) => (
+          // eslint-disable-next-line react/no-array-index-key
+          <li key={index}>
+            <Text variant="smallestException" tag="a" href={link.url}>
+              {link.text}
+            </Text>
+          </li>
+        ))}
       </MenuWrapper.CentralSide>
       <MenuWrapper.RightSide>
         <Button ghost variant="secondary.main">
