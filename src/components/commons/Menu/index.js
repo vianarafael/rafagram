@@ -36,7 +36,7 @@ function Menu() {
         ))}
       </MenuWrapper.CentralSide>
       <MenuWrapper.RightSide>
-        <Button ghost variant="secondary.main">
+        <Button ghost variant="secondary.main" href="/app/login">
           Login
         </Button>
         <Button variant="primary.main">Signup</Button>
