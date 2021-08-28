@@ -65,11 +65,17 @@ export const ButtonWrapper = styled.button`
 `;
 
 // eslint-disable-next-line react/prop-types
-export function Button({ href, children, onSetModal, variant }) {
+export function Button({ href, children, onSetModal, variant, ghost }) {
   const hasHref = Boolean(href);
   const tag = hasHref ? Link : "button";
   return (
-    <ButtonWrapper as={tag} href={href} onClick={onSetModal} variant={variant}>
+    <ButtonWrapper
+      as={tag}
+      href={href}
+      onClick={onSetModal}
+      variant={variant}
+      ghost={ghost}
+    >
       {children}
     </ButtonWrapper>
   );
