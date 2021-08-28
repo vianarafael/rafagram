@@ -1,5 +1,6 @@
 import React from "react";
+import FAQScreen from "../../src/components/screens/FAQScreen";
 
 export default function FAQPage() {
-  return <div>FAQ Page</div>;
+  return <FAQScreen />;
 }

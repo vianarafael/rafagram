@@ -33,7 +33,11 @@ export default function Home() {
         )}
       </Modal>
 
-      <Menu />
+      <Menu
+        onSetModal={() => {
+          setModal(!modal);
+        }}
+      />
 
       <Grid.Container
         marginTop={{
@@ -83,11 +87,11 @@ export default function Home() {
                   md: "initial",
                 }}
                 display="block"
-                onClick={() => {
+                onSetModal={() => {
                   setModal(!modal);
                 }}
               >
-                Cadastrar
+                Signup
               </Button>
             </div>
           </Grid.Col>

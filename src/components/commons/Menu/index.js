@@ -19,7 +19,8 @@ const links = [
   },
 ];
 
-function Menu() {
+// eslint-disable-next-line react/prop-types
+function Menu({ onSetModal }) {
   return (
     <MenuWrapper>
       <MenuWrapper.LeftSide>
@@ -39,7 +40,9 @@ function Menu() {
         <Button ghost variant="secondary.main" href="/app/login">
           Login
         </Button>
-        <Button variant="primary.main">Signup</Button>
+        <Button variant="primary.main" onSetModal={onSetModal}>
+          Signup
+        </Button>
       </MenuWrapper.RightSide>
     </MenuWrapper>
   );

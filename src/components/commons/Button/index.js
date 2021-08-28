@@ -14,8 +14,10 @@ const ButtonGhost = css`
 
 const ButtonDefault = css`
   color: ${(props) => get(props.theme, `colors.${props.variant}.contrastText`)};
-  background-color: ${(props) =>
-    get(props.theme, `colors.${props.variant}.color`)};
+  background-color: ${(props) => {
+    console.log(props.variant);
+    return get(props.theme, `colors.${props.variant}.color`);
+  }};
 `;
 
 export const ButtonWrapper = styled.button`
@@ -28,7 +30,8 @@ export const ButtonWrapper = styled.button`
 
   ${TextStyleVariantsMap.smallestException}
 
-  ${({ ghost }) => {
+  ${({ ghost, variant }) => {
+    console.log(variant);
     if (ghost) {
       return ButtonGhost;
     }
@@ -65,11 +68,11 @@ export const ButtonWrapper = styled.button`
 `;
 
 // eslint-disable-next-line react/prop-types
-export function Button({ href, children }) {
+export function Button({ href, children, onSetModal, variant }) {
   const hasHref = Boolean(href);
   const tag = hasHref ? Link : "button";
   return (
-    <ButtonWrapper as={tag} href={href}>
+    <ButtonWrapper as={tag} href={href} onClick={onSetModal} variant={variant}>
       {children}
     </ButtonWrapper>
   );
