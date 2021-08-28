@@ -14,10 +14,8 @@ const ButtonGhost = css`
 
 const ButtonDefault = css`
   color: ${(props) => get(props.theme, `colors.${props.variant}.contrastText`)};
-  background-color: ${(props) => {
-    console.log(props.variant);
-    return get(props.theme, `colors.${props.variant}.color`);
-  }};
+  background-color: ${(props) =>
+    get(props.theme, `colors.${props.variant}.color`)};
 `;
 
 export const ButtonWrapper = styled.button`
@@ -30,8 +28,7 @@ export const ButtonWrapper = styled.button`
 
   ${TextStyleVariantsMap.smallestException}
 
-  ${({ ghost, variant }) => {
-    console.log(variant);
+  ${({ ghost }) => {
     if (ghost) {
       return ButtonGhost;
     }
