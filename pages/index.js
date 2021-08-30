@@ -7,6 +7,8 @@ import { Grid } from "../src/components/foundations/Layout/Grid";
 import { Box } from "../src/components/foundations/Layout/Box";
 import Modal from "../src/components/commons/Modal";
 import SingupForm from "../src/components/patterns/singupForm";
+import { SEO } from "../src/components/commons/SEO";
+// import { SEO } from "../src/components/commons/SEO";
 
 export default function Home() {
   const [modal, setModal] = useState(false);
@@ -21,6 +23,7 @@ export default function Home() {
       backgroundRepeat="no-repeat"
       backgroundPosition="bottom right"
     >
+      <SEO headTitle="Home" />
       <Modal
         isOpen={modal}
         setModal={setModal}
