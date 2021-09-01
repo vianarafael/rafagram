@@ -7,6 +7,7 @@ import { Grid } from "../src/components/foundations/Layout/Grid";
 import WebsitePageWrapper, {
   WebsitePageContext,
 } from "../src/wrappers/WebsitePage";
+import websitePageHOC from "../src/wrappers/WebsitePage/hoc";
 
 function HomeScreen() {
   const websitePageContext = React.useContext(WebsitePageContext);
@@ -79,20 +80,28 @@ function HomeScreen() {
   );
 }
 
-export default function Home() {
-  return (
-    <WebsitePageWrapper
-      seoProps={{ headTitle: "Home" }}
-      pageBoxProps={{
-        backgroundImage: "url(images/bubbles.svg)",
-        backgroundRepeat: "no-repeat",
-        backgroundPosition: "bottom right",
-      }}
-      menuProps={{
-        display: false,
-      }}
-    >
-      <HomeScreen />
-    </WebsitePageWrapper>
-  );
-}
+export default websitePageHOC(HomeScreen, {
+  pageWrapperProps: {
+    seoProps: { headTitle: "Home" },
+    pageBoxProps: {
+      backgroundImage: "url(images/bubbles.svg)",
+      backgroundRepeat: "no-repeat",
+      backgroundPosition: "bottom right",
+    },
+  },
+});
+
+// export default function Home() {
+//   return (
+//     <WebsitePageWrapper
+//       seoProps={{ headTitle: "Home" }}
+//       pageBoxProps={{
+//         backgroundImage: "url(images/bubbles.svg)",
+//         backgroundRepeat: "no-repeat",
+//         backgroundPosition: "bottom right",
+//       }}
+//     >
+//       <HomeScreen />
+//     </WebsitePageWrapper>
+//   );
+// }

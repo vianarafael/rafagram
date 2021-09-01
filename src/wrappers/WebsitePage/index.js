@@ -55,6 +55,25 @@ export default function WebsitePageWrapper({
   );
 }
 
+WebsitePageWrapper.defaultProps = {
+  seoProps: {},
+  pageBoxProps: {},
+  menuProps: {
+    display: true,
+  },
+};
+
 WebsitePageWrapper.propTypes = {
   children: PropTypes.node.isRequired,
+  seoProps: PropTypes.shape({
+    headTitle: PropTypes.string,
+  }),
+  menuProps: PropTypes.shape({
+    display: PropTypes.bool,
+  }),
+  pageBoxProps: PropTypes.shape({
+    backgroundImage: PropTypes.string,
+    backgroundRepeat: PropTypes.string,
+    backgroundPosition: PropTypes.string,
+  }),
 };
