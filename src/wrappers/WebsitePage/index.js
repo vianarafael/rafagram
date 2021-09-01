@@ -6,30 +6,42 @@ import Modal from "../../components/commons/Modal";
 import SingupForm from "../../components/patterns/singupForm";
 import { Box } from "../../components/foundations/Layout/Box";
 
+export const WebsitePageContext = React.createContext({
+  toggleModalSingup: () => {},
+});
+
 export default function WebsitePageWrapper({ children }) {
   const [modal, setModal] = React.useState(false);
   return (
-    <Box display="flex" flex="1" flexDirection="column">
-      <Menu
-        onSetModal={() => {
+    <WebsitePageContext.Provider
+      value={{
+        toggleModalSingup: () => {
           setModal(!modal);
-        }}
-      />
+        },
+      }}
+    >
+      <Box display="flex" flex="1" flexDirection="column">
+        <Menu
+          onSetModal={() => {
+            setModal(!modal);
+          }}
+        />
 
-      <Modal
-        isOpen={modal}
-        setModal={setModal}
-        onClose={() => {
-          setModal(false);
-        }}
-      >
-        {(modalProps) => (
-          <SingupForm modalProps={modalProps} setModal={setModal} />
-        )}
-      </Modal>
-      {children}
-      <Footer />
-    </Box>
+        <Modal
+          isOpen={modal}
+          setModal={setModal}
+          onClose={() => {
+            setModal(false);
+          }}
+        >
+          {(modalProps) => (
+            <SingupForm modalProps={modalProps} setModal={setModal} />
+          )}
+        </Modal>
+        {children}
+        <Footer />
+      </Box>
+    </WebsitePageContext.Provider>
   );
 }
 
