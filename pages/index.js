@@ -4,9 +4,7 @@ import Text from "../src/components/foundations/Text";
 import { Button } from "../src/components/commons/Button";
 import { Grid } from "../src/components/foundations/Layout/Grid";
 
-import WebsitePageWrapper, {
-  WebsitePageContext,
-} from "../src/wrappers/WebsitePage";
+import { WebsitePageContext } from "../src/wrappers/WebsitePage";
 import websitePageHOC from "../src/wrappers/WebsitePage/hoc";
 
 function HomeScreen() {
@@ -90,18 +88,3 @@ export default websitePageHOC(HomeScreen, {
     },
   },
 });
-
-// export default function Home() {
-//   return (
-//     <WebsitePageWrapper
-//       seoProps={{ headTitle: "Home" }}
-//       pageBoxProps={{
-//         backgroundImage: "url(images/bubbles.svg)",
-//         backgroundRepeat: "no-repeat",
-//         backgroundPosition: "bottom right",
-//       }}
-//     >
-//       <HomeScreen />
-//     </WebsitePageWrapper>
-//   );
-// }
