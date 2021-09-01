@@ -24,6 +24,10 @@ html,
     display: flex;
     flex-direction: column;
   }
+
+  a {
+    cursor: pointer
+  }
 `;
 
 export default GlobalStyle;
