@@ -1,46 +1,27 @@
 import React, { useState } from "react";
-import Menu from "../src/components/commons/Menu";
-import Footer from "../src/components/commons/Footer";
+
 import Text from "../src/components/foundations/Text";
 import { Button } from "../src/components/commons/Button";
 import { Grid } from "../src/components/foundations/Layout/Grid";
-import { Box } from "../src/components/foundations/Layout/Box";
-import Modal from "../src/components/commons/Modal";
-import SingupForm from "../src/components/patterns/singupForm";
+
 import { SEO } from "../src/components/commons/SEO";
-// import { SEO } from "../src/components/commons/SEO";
+import WebsitePageWrapper from "../src/wrappers/WebsitePage";
 
 export default function Home() {
   const [modal, setModal] = useState(false);
 
   return (
-    <Box
-      display="flex"
-      flexWrap="wrap"
-      flexDirection="column"
-      justifyContent="space-between"
-      backgroundImage="url(/images/bubbles.svg)"
-      backgroundRepeat="no-repeat"
-      backgroundPosition="bottom right"
-    >
+    // <Box
+    //   display="flex"
+    //   flexWrap="wrap"
+    //   flexDirection="column"
+    //   justifyContent="space-between"
+    //   backgroundImage="url(/images/bubbles.svg)"
+    //   backgroundRepeat="no-repeat"
+    //   backgroundPosition="bottom right"
+    // >
+    <WebsitePageWrapper>
       <SEO headTitle="Home" />
-      <Modal
-        isOpen={modal}
-        setModal={setModal}
-        onClose={() => {
-          setModal(false);
-        }}
-      >
-        {(modalProps) => (
-          <SingupForm modalProps={modalProps} setModal={setModal} />
-        )}
-      </Modal>
-
-      <Menu
-        onSetModal={() => {
-          setModal(!modal);
-        }}
-      />
 
       <Grid.Container
         marginTop={{
@@ -107,8 +88,6 @@ export default function Home() {
           </Grid.Col>
         </Grid.Row>
       </Grid.Container>
-
-      <Footer />
-    </Box>
+    </WebsitePageWrapper>
   );
 }
