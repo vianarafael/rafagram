@@ -22,8 +22,6 @@ export async function getStaticProps() {
     .then((res) => res.json())
     .then((convertedResponse) => convertedResponse.data);
 
-  console.log("faqCategories", faqCategories);
-
   return {
     props: {
       faqCategories,
