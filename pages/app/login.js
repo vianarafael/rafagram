@@ -2,11 +2,11 @@ import React from "react";
 import { Button } from "../../src/components/commons/Button";
 import Link from "../../src/components/commons/Link";
 import TextField from "../../src/components/forms/TextField";
-import { Box } from "../../src/components/foundation/layout/Box";
-import { Grid } from "../../src/components/foundation/layout/Grid";
-import Text from "../../src/components/foundation/Text";
-import { WebsitePageContext } from "../../src/components/wrappers/WebsitePage";
-import websitePageHOC from "../../src/components/wrappers/WebsitePage/hoc";
+import { Box } from "../../src/components/foundations/Layout/Box";
+import { Grid } from "../../src/components/foundations/Layout/Grid";
+import Text from "../../src/components/foundations/Text";
+import { WebsitePageContext } from "../../src/wrappers/WebsitePage";
+import websitePageHOC from "../../src/wrappers/WebsitePage/hoc";
 import { Logo } from "../../src/theme/Logo";
 
 function LoginForm() {
