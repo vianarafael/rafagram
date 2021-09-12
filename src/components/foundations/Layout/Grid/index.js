@@ -124,7 +124,10 @@ export const Grid = {
       `,
     })}
 
-    ${propsToStyle("marginTop")}
+    ${propsToStyle("marginTop")}  
+    ${propsToStyle("display")}
+    ${propsToStyle("flex")}
+    ${propsToStyle("alignItems")}
   `,
   Row: styled.div`
     display: flex;
