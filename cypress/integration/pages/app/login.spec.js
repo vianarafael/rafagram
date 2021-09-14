@@ -9,5 +9,7 @@ describe("/pages/app/login/", () => {
     cy.get('input[name="senha"]').type("password");
     // click the button field
     cy.get('#formCadastro button[type="submit"]').click();
+    // after the click check if we are on the correct url
+    cy.url().should("include", "/app/profile");
   });
 });
