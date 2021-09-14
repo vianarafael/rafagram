@@ -3,6 +3,11 @@ describe("/pages/app/login/", () => {
     // start on the login page
     cy.visit("/app/login/");
 
-    // fill out the user
+    // fill out the user input field
+    cy.get('input[name="usuario"]').type("user");
+    // fill out the password input filed
+    cy.get('input[name="senha"]').type("password");
+    // click the button field
+    cy.get('#formCadastro button[type="submit"]').click();
   });
 });
