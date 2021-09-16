@@ -5,26 +5,20 @@ import TextField from "../../forms/TextField";
 // import { useForm } from "../../../infra/hooks/forms/useForm";
 // import { loginService } from "../../../services/login/loginService";
 
-function useForm(initialValues) {
+function useForm({ initialValues, onSubmit }) {
   const [values, setValues] = React.useState(initialValues);
 
   return {
     values,
     handleSubmit() {},
-    handleChange(e) {
-      e.preventDefault();
-      console.log(values);
-      // console.log("target", values[e.target.name]);
+    handleChange(event) {
+      const fieldName = event.target.getAttribute("name");
+      const { value } = event.target;
 
       setValues((currentValues) => ({
         ...currentValues,
-        [e.target.name]: e.target.value,
+        [fieldName]: value,
       }));
-
-      // setValues({
-      //   usuario: "filho da puta",
-      //   senha: "a",
-      // });
     },
   };
 }
@@ -49,6 +43,8 @@ export default function LoginForm() {
         });
     },
   });
+
+  console.log("here", form);
 
   return (
     <form id="formCadastro" onSubmit={form.handleSubmit}>
