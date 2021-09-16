@@ -16,10 +16,10 @@ function useForm(initialValues) {
       console.log(values);
       // console.log("target", values[e.target.name]);
 
-      setValues({
-        ...values,
+      setValues((currentValues) => ({
+        ...currentValues,
         [e.target.name]: e.target.value,
-      });
+      }));
 
       // setValues({
       //   usuario: "filho da puta",
