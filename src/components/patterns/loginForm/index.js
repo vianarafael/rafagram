@@ -11,7 +11,21 @@ function useForm(initialValues) {
   return {
     values,
     handleSubmit() {},
-    handleChange() {},
+    handleChange(e) {
+      e.preventDefault();
+      console.log(values);
+      // console.log("target", values[e.target.name]);
+
+      setValues({
+        ...values,
+        [e.target.name]: e.target.value,
+      });
+
+      // setValues({
+      //   usuario: "filho da puta",
+      //   senha: "a",
+      // });
+    },
   };
 }
 
