@@ -1,7 +1,8 @@
 import React from "react";
-import { useRouter } from "next/router";
 import { Button } from "../../commons/Button";
 import TextField from "../../forms/TextField";
+
+import { useRouter } from "next/router";
 // import { useForm } from "../../../infra/hooks/forms/useForm";
 // import { loginService } from "../../../services/login/loginService";
 
@@ -45,6 +46,7 @@ export default function LoginForm() {
       //   router.push("/app/profile");
       // });
       console.log(values);
+      router.push("/app/profile");
     },
   });
 
