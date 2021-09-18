@@ -10,7 +10,10 @@ function useForm({ initialValues, onSubmit }) {
 
   return {
     values,
-    handleSubmit() {},
+    handleSubmit(event) {
+      event.preventDefault();
+      onSubmit(values);
+    },
     handleChange(event) {
       const fieldName = event.target.getAttribute("name");
       const { value } = event.target;
@@ -33,18 +36,17 @@ export default function LoginForm() {
   const form = useForm({
     initialValues,
     onSubmit: (values) => {
-      loginService
-        .login({
-          username: values.usuario, // 'omariosouto'
-          password: values.senha, // 'senhasegura'
-        })
-        .then(() => {
-          router.push("/app/profile");
-        });
+      // loginService
+      //   .login({
+      //     username: values.usuario, // 'omariosouto'
+      //     password: values.senha, // 'senhasegura'
+      // })
+      // .then(() => {
+      //   router.push("/app/profile");
+      // });
+      console.log(values);
     },
   });
-
-  console.log("here", form);
 
   return (
     <form id="formCadastro" onSubmit={form.handleSubmit}>
